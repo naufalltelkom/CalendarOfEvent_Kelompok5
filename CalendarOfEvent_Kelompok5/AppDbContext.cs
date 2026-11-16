@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.IO;
+using Microsoft.EntityFrameworkCore;
 using CalendarOfEvent_Kelompok5.Models;
 
 namespace CalendarOfEvent_Kelompok5
@@ -16,7 +18,11 @@ namespace CalendarOfEvent_Kelompok5
         protected override void OnConfiguring(
             DbContextOptionsBuilder options)
         {
-            options.UseSqlite("Data Source=CalendarOfEvent.db");
+            var dbPath = Path.Combine(
+                AppDomain.CurrentDomain.BaseDirectory,
+                "CalendarOfEvent.db");
+
+            options.UseSqlite($"Data Source={dbPath}");
         }
     }
 }

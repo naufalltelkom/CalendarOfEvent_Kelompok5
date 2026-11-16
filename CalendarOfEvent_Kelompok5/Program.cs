@@ -12,6 +12,7 @@ namespace CalendarOfEvent_Kelompok5
             using (var db = new AppDbContext())
             {
                 db.Database.EnsureCreated();
+                DbSeeder.Seed(db);
 
                 int pilihan;
 
